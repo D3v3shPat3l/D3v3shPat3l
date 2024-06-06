@@ -20,7 +20,7 @@ To run this website locally, follow these steps:
 Clone the repository:
 bash
 Copy code
-git clone https://github.com/your-username/devesh-website.git
+git clone https://github.com/your-username/d3v3shpat3l.github.io.git
 Navigate to the project directory:
 bash
 Copy code
