@@ -1,5 +1,3 @@
-
-//board
 var blockSize = 25;
 var rows = 20;
 var cols = 20;
@@ -7,19 +5,19 @@ var board;
 var context; 
 
 //snake head
-var snakeX = blockSize * 5;
-var snakeY = blockSize * 5;
+var snakeX;
+var snakeY;
 
-var velocityX = 0;
-var velocityY = 0;
+var velocityX;
+var velocityY;
 
-var snakeBody = [];
+var snakeBody;
 
 //food
 var foodX;
 var foodY;
 
-var gameOver = false;
+var gameOver;
 
 window.onload = function() {
     board = document.getElementById("board");
@@ -27,10 +25,21 @@ window.onload = function() {
     board.width = cols * blockSize;
     context = board.getContext("2d"); //used for drawing on the board
 
-    placeFood();
+    document.getElementById("restartBtn").addEventListener("click", restartGame);
+
+    startGame();
     document.addEventListener("keyup", changeDirection);
-    // update();
     setInterval(update, 1000/10); //100 milliseconds
+}
+
+function startGame() {
+    snakeX = blockSize * 5;
+    snakeY = blockSize * 5;
+    velocityX = 0;
+    velocityY = 0;
+    snakeBody = [];
+    gameOver = false;
+    placeFood();
 }
 
 function update() {
@@ -65,7 +74,7 @@ function update() {
     }
 
     //game over conditions
-    if (snakeX < 0 || snakeX > cols*blockSize || snakeY < 0 || snakeY > rows*blockSize) {
+    if (snakeX < 0 || snakeX >= cols*blockSize || snakeY < 0 || snakeY >= rows*blockSize) {
         gameOver = true;
         alert("Game Over");
     }
@@ -97,9 +106,12 @@ function changeDirection(e) {
     }
 }
 
-
 function placeFood() {
     //(0-1) * cols -> (0-19.9999) -> (0-19) * 25
     foodX = Math.floor(Math.random() * cols) * blockSize;
     foodY = Math.floor(Math.random() * rows) * blockSize;
+}
+
+function restartGame() {
+    startGame();
 }
