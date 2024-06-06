@@ -1,7 +1,104 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Devesh Patel</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #1f1f1f, #3a3a3a);
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            display: flex;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .content {
+            padding: 20px;
+        }
+        .content h1 {
+            margin: 0;
+            font-size: 36px;
+        }
+        .content p {
+            margin: 5px 0;
+        }
+        .sidebar {
+            background: #2a2a2a;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .sidebar img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .sidebar nav {
+            margin-top: 20px;
+        }
+        .sidebar nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            margin: 10px 0;
+            display: block;
+        }
+        .sidebar nav a:hover {
+            text-decoration: underline;
+        }
+        .social-icons {
+            display: flex;
+            justify-content: center;
+        }
+        .social-icons a {
+            color: #fff;
+            font-size: 24px;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+        .email {
+            margin-top: 20px;
+            font-size: 14px;
+        }
+    </style>
+</head>
 <body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
+    <div class="container">
+        <div class="sidebar">
+            <img src="your-image-url.jpg" alt="Devesh Patel">
+            <nav>
+                <a href="#about">about me</a>
+                <a href="#projects">projects</a>
+                <a href="#travel">travel</a>
+                <a href="#hire">hire me</a>
+            </nav>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-gamepad"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-discord"></i></a>
+            </div>
+            <div class="email">
+                <a href="mailto:"> </a>
+            </div>
+        </div>
+        <div class="content">
+            <h1>Devesh Patel</h1>
+            <p>Software Engineerr</p>
+        </div>
+    </div>
 </body>
 </html>
