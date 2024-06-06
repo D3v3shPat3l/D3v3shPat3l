@@ -24,6 +24,17 @@
         }
         .content {
             padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .content img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
         }
         .content h1 {
             margin: 0;
@@ -81,7 +92,6 @@
 <body>
     <div class="container">
         <div class="sidebar">
-            <img src="profilepic.jpeg" alt="Devesh Patel">
             <nav>
                 <a href="#about">about me</a>
                 <a href="#projects">projects</a>
@@ -98,6 +108,7 @@
             </div>
         </div>
         <div class="content">
+            <img src="profilepic.jpeg" alt="Devesh Patel">
             <h1>Devesh Patel</h1>
             <p>Software Engineer</p>
         </div>
