@@ -6,13 +6,16 @@ HTML5: For structuring the website content
 CSS3: For styling the website
 JavaScript: For adding interactivity and dynamic features
 Font Awesome: For icons
+Firebase: Backend Auth
+Names.co.uk: The URL
+Cloudflare.com: For the SSL certificate
 
 Features:
-Home Page
+Login Page: A login system using Firebase Auth to login to the website.
+Home Page: A menu to all of the options below.
 Projects: A showcase of my personal and professional projects.
 About Me: Detailed information about my background, skills, and interests.
-Contact: A contact form to get in touch with me.
-Travel: Places that i have travelled in the past few years.
+
 
 Installation
 To run this website locally, follow these steps:
