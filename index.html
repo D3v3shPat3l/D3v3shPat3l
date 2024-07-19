@@ -64,12 +64,12 @@
         .sidebar nav a {
             color: #fff;
             text-decoration: none;
-            font-size: 24px; /* Increased font size */
-            margin: 20px 0; /* Increased vertical margin */
+            font-size: 24px;
+            margin: 20px 0;
             display: block;
-            font-weight: bold; /* Added font weight for emphasis */
-            letter-spacing: 1px; /* Added letter spacing for a nicer look */
-            transition: all 0.3s ease; /* Added transition for smoother hover effect */
+            font-weight: bold;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
         }
         .sidebar nav a:hover {
             text-decoration: underline;
@@ -108,7 +108,6 @@
             margin-top: 20px;
         }
     </style>
-    <!-- Font Awesome CDN for social icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
@@ -130,13 +129,13 @@
             <img src="profilepic.jpeg" alt="Devesh Patel">
             <h1>Devesh Patel</h1>
             <p>Software Engineer</p>
-            <button class="logout-button" onclick="logout()">Logout</button>
+            <button class="logout-button" onclick="warnAndLogout()">Logout</button>
         </div>
     </div>
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
         import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-        
+
         const firebaseConfig = {
             apiKey: "AIzaSyAbDSq9W0zR4UomHJ2TN0CYnIlck6K5rzk",
             authDomain: "deveshuk-website.firebaseapp.com",
@@ -145,18 +144,22 @@
             messagingSenderId: "727172136835",
             appId: "1:727172136835:web:cf2df85394ee6df43e80b6"
         };
-        
+
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
-        
-        window.logout = function() {
-            signOut(auth).then(() => {
-                window.location.href = 'auth.html';
-            }).catch((error) => {
-                alert('Error: ' + error.message);
-            });
+
+        window.warnAndLogout = function() {
+            const proceed = confirm('Warning: The authentication system is currently under maintenance and is disabled. Do you still want to proceed?');
+            if (proceed) {
+                signOut(auth).then(() => {
+                    window.location.href = 'auth.html';
+                }).catch((error) => {
+                    alert('Error: ' + error.message);
+                });
+            }
         };
     </script>
 </body>
 </html>
+
 
