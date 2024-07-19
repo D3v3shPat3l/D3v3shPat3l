@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Devesh | Login</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: url('background.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            display: flex;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            padding: 20px;
+            position: relative;
+        }
+        .content {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .content h1 {
+            margin: 0 0 20px 0;
+            font-size: 36px;
+        }
+        .content input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: none;
+        }
+        .content button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <h1>Login</h1>
+            <input type="text" id="username" placeholder="Username">
+            <input type="password" id="password" placeholder="Password">
+            <button onclick="login()">Login</button>
+        </div>
+    </div>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+        import { getDatabase, ref, update } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+        
+        const firebaseConfig = {
+            apiKey: "AIzaSyAbDSq9W0zR4UomHJ2TN0CYnIlck6K5rzk",
+            authDomain: "deveshuk-website.firebaseapp.com",
+            projectId: "deveshuk-website",
+            storageBucket: "deveshuk-website.appspot.com",
+            messagingSenderId: "727172136835",
+            appId: "1:727172136835:web:cf2df85394ee6df43e80b6"
+        };
+        
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const database = getDatabase(app);
+        
+        window.login = function() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            signInWithEmailAndPassword(auth, username, password)
+                .then((userCredential) => {
+                    const user = userCredential.user;
+                    const databaseRef = ref(database, 'users/' + user.uid);
+                    
+                    update(databaseRef, {
+                        last_login: Date.now()
+                    });
+                    
+                    alert('User Logged In!');
+                    window.location.href = 'main.html';
+                })
+                .catch((error) => {
+                    alert(error.message);
+                });
+        };
+    </script>
+</body>
+</html>
+

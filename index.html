@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Devesh | Login</title>
+    <title>Devesh | Main</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -22,8 +21,7 @@
             display: flex;
             background: rgba(0, 0, 0, 0.7);
             border-radius: 10px;
-            padding: 20px;
-            position: relative;
+            overflow: hidden;
         }
         .content {
             padding: 20px;
@@ -32,40 +30,112 @@
             align-items: center;
             text-align: center;
         }
+        .content img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
         .content h1 {
-            margin: 0 0 20px 0;
+            margin: 0;
             font-size: 36px;
         }
-        .content input {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border-radius: 5px;
-            border: none;
+        .content p {
+            margin: 5px 0;
         }
-        .content button {
+        .sidebar {
+            background: #2a2a2a;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .sidebar img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .sidebar nav {
+            margin-top: 20px;
+        }
+        .sidebar nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 24px; /* Increased font size */
+            margin: 20px 0; /* Increased vertical margin */
+            display: block;
+            font-weight: bold; /* Added font weight for emphasis */
+            letter-spacing: 1px; /* Added letter spacing for a nicer look */
+            transition: all 0.3s ease; /* Added transition for smoother hover effect */
+        }
+        .sidebar nav a:hover {
+            text-decoration: underline;
+        }
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .social-icons a {
+            color: #fff;
+            font-size: 24px;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+        .email {
+            margin-top: 20px;
+            font-size: 14px;
+        }
+        .email a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .email a:hover {
+            text-decoration: underline;
+        }
+
+        .logout-button {
             padding: 10px 20px;
             border: none;
             border-radius: 5px;
-            background-color: #007bff;
+            background-color: #dc3545;
             color: white;
             cursor: pointer;
+            margin-top: 20px;
         }
     </style>
+    <!-- Font Awesome CDN for social icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
     <div class="container">
+        <div class="sidebar">
+            <nav>
+                <a href="about.html">About Me</a>
+                <a href="projects.html">Projects</a>
+                <a href="hireme.html">Hire me</a>
+            </nav>
+            <div class="social-icons">
+                <a href="https://github.com/D3v3shPat3l" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/deveshpatel04/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://discord.com/users/deveshtradeseth" target="_blank"><i class="fab fa-discord"></i></a>
+                <a href="mailto:devesh.patel360@gmail.com"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
         <div class="content">
-            <h1>Login</h1>
-            <input type="text" id="username" placeholder="Username">
-            <input type="password" id="password" placeholder="Password">
-            <button onclick="login()">Login</button>
+            <img src="profilepic.jpeg" alt="Devesh Patel">
+            <h1>Devesh Patel</h1>
+            <p>Software Engineer</p>
+            <button class="logout-button" onclick="logout()">Logout</button>
         </div>
     </div>
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-        import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-        import { getDatabase, ref, update } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+        import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
         
         const firebaseConfig = {
             apiKey: "AIzaSyAbDSq9W0zR4UomHJ2TN0CYnIlck6K5rzk",
@@ -78,27 +148,13 @@
         
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
-        const database = getDatabase(app);
         
-        window.login = function() {
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-            
-            signInWithEmailAndPassword(auth, username, password)
-                .then((userCredential) => {
-                    const user = userCredential.user;
-                    const databaseRef = ref(database, 'users/' + user.uid);
-                    
-                    update(databaseRef, {
-                        last_login: Date.now()
-                    });
-                    
-                    alert('User Logged In!');
-                    window.location.href = 'main.html';
-                })
-                .catch((error) => {
-                    alert(error.message);
-                });
+        window.logout = function() {
+            signOut(auth).then(() => {
+                window.location.href = 'auth.html';
+            }).catch((error) => {
+                alert('Error: ' + error.message);
+            });
         };
     </script>
 </body>
