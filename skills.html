@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <title>Skills | Devesh Patel</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.waves.min.js"></script>
   <style>
     :root {
       --primary-color: #00ffc3;
@@ -23,6 +25,16 @@
       align-items: center;
       min-height: 100vh;
       animation: fadeIn 2s ease;
+      overflow: hidden;
+    }
+
+    #background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
     }
 
     .bubble {
@@ -69,6 +81,8 @@
   </style>
 </head>
 <body>
+  <div id="background"></div>
+
   <div class="bubble">
     <nav>
       <a href="index.html">Home</a>
@@ -87,6 +101,20 @@
       <li>Version Control: Git</li>
     </ul>
   </div>
+
+  <script>
+    VANTA.WAVES({
+      el: "#background",
+      mouseControls: true,
+      touchControls: true,
+      gyroControls: false,
+      minHeight: 200.00,
+      minWidth: 200.00,
+      scale: 1.00,
+      scaleMobile: 1.00,
+      color: 0x1a1b1b
+    });
+  </script>
 </body>
 </html>
 
