@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <title>About | Devesh Patel</title>
+  <title>Contact | Devesh Patel</title>
   <style>
     :root {
       --primary-color: #00ffc3;
@@ -55,9 +55,16 @@
       text-decoration: underline;
     }
 
-    p {
-      font-size: 1.1rem;
-      line-height: 1.6;
+    a.contact-link {
+      display: block;
+      margin: 1rem 0;
+      color: var(--primary-color);
+      font-size: 1.2rem;
+      text-decoration: none;
+    }
+
+    a.contact-link:hover {
+      text-decoration: underline;
     }
 
     @keyframes fadeIn {
@@ -70,14 +77,18 @@
   <div class="bubble">
     <nav>
       <a href="index.html">Home</a>
+      <a href="about.html">About</a>
       <a href="education.html">Education</a>
       <a href="experience.html">Experience</a>
       <a href="skills.html">Skills</a>
-      <a href="contact.html">Contact</a>
     </nav>
 
-    <h1>About Me</h1>
-    <p>Hi! I'm Devesh Patel, a passionate 20-year-old Computer Science student based in London. I love building innovative solutions and exploring new technologies. I’m currently pursuing a Bachelor’s degree in Computer Science at Swansea University, and I’m deeply interested in the fields of Crypto, AI, and Fintech. My portfolio showcases a variety of projects that reflect my technical ability and creativity.</p>
+    <h1>Contact</h1>
+    <a class="contact-link" href="mailto:devesh.patel360@gmail.com">Email Me</a>
+    <a class="contact-link" href="https://linkedin.com/in/deveshpatel04" target="_blank">LinkedIn</a>
+    <a class="contact-link" href="https://github.com/D3v3shPat3l" target="_blank">GitHub</a>
+    <a class="contact-link" href="https://devesh.uk" target="_blank">Personal Website</a>
+    <a class="contact-link" href="Devesh_Patel_CV.pdf" download>Download CV</a>
   </div>
 </body>
 </html>

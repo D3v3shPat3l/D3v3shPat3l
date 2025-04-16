@@ -1,165 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Devesh | Main</title>
-    <link rel="icon" href="favicon.ico" type="image/x-icon"/>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: url('background.jpg') no-repeat center center fixed;
-            background-size: cover;
-            color: #fff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-        .container {
-            display: flex;
-            background: rgba(0, 0, 0, 0.7);
-            border-radius: 10px;
-            overflow: hidden;
-        }
-        .content {
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-        .content img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 20px;
-        }
-        .content h1 {
-            margin: 0;
-            font-size: 36px;
-        }
-        .content p {
-            margin: 5px 0;
-        }
-        .sidebar {
-            background: #2a2a2a;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .sidebar img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-        }
-        .sidebar nav {
-            margin-top: 20px;
-        }
-        .sidebar nav a {
-            color: #fff;
-            text-decoration: none;
-            font-size: 24px;
-            margin: 20px 0;
-            display: block;
-            font-weight: bold;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-        }
-        .sidebar nav a:hover {
-            text-decoration: underline;
-        }
-        .social-icons {
-            display: flex;
-            justify-content: center;
-            margin-top: 20px;
-        }
-        .social-icons a {
-            color: #fff;
-            font-size: 24px;
-            margin: 0 10px;
-            text-decoration: none;
-        }
-        .email {
-            margin-top: 20px;
-            font-size: 14px;
-        }
-        .email a {
-            color: #fff;
-            text-decoration: none;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <title>Devesh Patel</title>
+  <style>
+    :root {
+      --primary-color: #00ffc3;
+      --text-color: #f0f0f0;
+      --bg-color: #0f0f0f;
+      --font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
 
-        .email a:hover {
-            text-decoration: underline;
-        }
+    body {
+      margin: 0;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      font-family: var(--font);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+      text-align: center;
+      animation: fadeIn 2s ease;
+    }
 
-        .logout-button {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            background-color: #dc3545;
-            color: white;
-            cursor: pointer;
-            margin-top: 20px;
-        }
-    </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    .bubble {
+      background-color: #1a1a1a;
+      border-radius: 20px;
+      padding: 3rem;
+      max-width: 700px;
+      width: 90%;
+      box-shadow: 0 0 20px rgba(0, 255, 195, 0.2);
+    }
+
+    h1 {
+      font-size: 3.5rem;
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+    }
+
+    p {
+      font-size: 1.5rem;
+      color: #aaa;
+    }
+
+    nav {
+      margin-top: 2rem;
+    }
+
+    nav a {
+      margin: 0 1rem;
+      text-decoration: none;
+      color: var(--primary-color);
+      font-weight: bold;
+      font-size: 1rem;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <div class="sidebar">
-            <nav>
-                <a href="about.html">About Me</a>
-                <a href="projects.html">Projects</a>
-                <a href="hireme.html">Hire me</a>
-            </nav>
-            <div class="social-icons">
-                <a href="https://github.com/D3v3shPat3l" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/deveshpatel04/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                <a href="https://discord.com/users/deveshtradeseth" target="_blank"><i class="fab fa-discord"></i></a>
-                <a href="mailto:devesh.patel360@gmail.com"><i class="fas fa-envelope"></i></a>
-            </div>
-        </div>
-        <div class="content">
-            <img src="profilepic.jpeg" alt="Devesh Patel">
-            <h1>Devesh Patel</h1>
-            <p>Software Engineer</p>
-            <button class="logout-button" onclick="warnAndLogout()">Logout</button>
-        </div>
-    </div>
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-        import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-
-        const firebaseConfig = {
-            apiKey: "AIzaSyAbDSq9W0zR4UomHJ2TN0CYnIlck6K5rzk",
-            authDomain: "deveshuk-website.firebaseapp.com",
-            projectId: "deveshuk-website",
-            storageBucket: "deveshuk-website.appspot.com",
-            messagingSenderId: "727172136835",
-            appId: "1:727172136835:web:cf2df85394ee6df43e80b6"
-        };
-
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
-
-        window.warnAndLogout = function() {
-            const proceed = confirm('Warning: The authentication system is currently under maintenance and is disabled. Do you still want to proceed?');
-            if (proceed) {
-                signOut(auth).then(() => {
-                    window.location.href = 'auth.html';
-                }).catch((error) => {
-                    alert('Error: ' + error.message);
-                });
-            }
-        };
-    </script>
+  <div class="bubble">
+    <h1>Devesh Patel</h1>
+    <p>Backend Developer | Software Engineer</p>
+    <nav>
+      <a href="about.html">About</a>
+      <a href="education.html">Education</a>
+      <a href="experience.html">Experience</a>
+      <a href="skills.html">Skills</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
 </body>
 </html>
-
-
